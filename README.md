@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # alexbaily-site-infrastructure
 
 Will be:
@@ -17,4 +16,3 @@ CI/CD:
 Jenkins to be used.
 =======
 # alexbaily-site-infrastructure
->>>>>>> 210b5c33a8bdd147ca4042105c14a5dd21a79162
