@@ -19,7 +19,7 @@
     "provisioners": [
         {
             "type": "ansible-local",
-            "playbook_file": "../ansible/plays/kops.yml"
+            "playbook_file": "../../configuration-management/ansible/plays/kops.yml"
         }
     ]
 }

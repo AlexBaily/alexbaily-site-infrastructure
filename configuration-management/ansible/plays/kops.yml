@@ -1,0 +1,5 @@
+---
+ - hosts: kops
+   become: yes
+   roles:
+      - kops
