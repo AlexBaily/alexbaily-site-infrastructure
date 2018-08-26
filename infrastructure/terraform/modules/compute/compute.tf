@@ -5,6 +5,7 @@ variable "kops_ami_id"     {}
 variable "private_subnets" {}
 variable "asg_name"        {} 
 variable "env"             {}
+variable "name"            {}
 
 data "aws_ami" "kops_master" {
   filter {

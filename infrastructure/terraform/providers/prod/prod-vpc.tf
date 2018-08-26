@@ -8,6 +8,7 @@ variable "cidrs"          {}
 variable "priv_cidrs"     {}
 variable "azs"            {}
 variable "kops_ami_id"    {}
+variable "env"            {}
 provider "aws" {
   region = "${var.region}"
 }
@@ -25,11 +26,11 @@ module "network" {
 
 module "compute" {
   source = "../../modules/compute"
-
-  region       = "${var.region}"
-  kops_ami_id  = "${var.kops_ami_id}"
-  subnets      = "${module.network.subnet_ids}"
-  name         = "${var.name}"
-  vpc_id       = "${module.network.vpc_id}"
+  name            = "${var.name}"
+  region          = "${var.region}"
+  env             = "${var.env}"
+  kops_ami_id     = "${var.kops_ami_id}"
+  private_subnets = "${module.network.subnet_ids}"
+  asg_name        = "${var.name}"
 
 }

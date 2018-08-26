@@ -1,5 +1,6 @@
 #Global
 region   = "eu-west-1"
+env      = "prod"
 
 #Network
 name           = "VPN test VPC"
