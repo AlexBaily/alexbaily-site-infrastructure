@@ -69,7 +69,7 @@ resource "aws_eip" "nat" {
 #One Nat Gateway to keep down cost rather than one in each private subnet
 resource "aws_nat_gateway" "gw" {
   allocation_id = "${aws_eip.nat.id}"
-  subnet_id     = "${aws_subnet.private.0.id}"
+  subnet_id     = "${aws_subnet.public.0.id}"
 }
 
 output "vpc-id"     { value = "${aws_vpc.vpc.id}" }
