@@ -24,7 +24,7 @@ module "network" {
   cidrs            = "${var.cidrs}"
 }
 
-module "compute" {
+/*module "compute" {
   source = "../../modules/compute"
   name            = "${var.name}"
   region          = "${var.region}"
@@ -33,4 +33,4 @@ module "compute" {
   private_subnets = "${module.network.subnet_ids}"
   asg_name        = "${var.name}"
 
-}
+}*/

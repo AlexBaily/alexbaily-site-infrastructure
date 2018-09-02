@@ -2,6 +2,8 @@
     "variables": {
         "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
         "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+        "vpc_id":         "{{env `VPC_ID}}",
+        "subnet_id":      "{{env `SUBNET_ID}}",
         "region":         "eu-west-1"
     },
     "builders": [
@@ -13,12 +15,14 @@
             "secret_key": "{{user `aws_secret_key`}}",
             "source_ami": "ami-0d6b2574",
             "ssh_username": "ec2-user",
+            "vpc_id": "{{user `vpc_id}}",
+            "subnet_id": "{{user `subnet_id}}",
             "type": "amazon-ebs"
         }
     ],
     "provisioners": [
         {
-            "type": "ansible-local",
+            "type": "ansible",
             "playbook_file": "../../configuration-management/ansible/plays/kops.yml"
         }
     ]
