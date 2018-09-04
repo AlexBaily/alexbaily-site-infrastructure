@@ -72,5 +72,5 @@ resource "aws_nat_gateway" "gw" {
   subnet_id     = "${aws_subnet.public.0.id}"
 }
 
-output "vpc-id"     { value = "${aws_vpc.vpc.id}" }
-output "subnet_ids" { value = "${join(",", aws_subnet.public.*.id)}" }
+output "vpc_id"     { value = "${aws_vpc.vpc.id}" }
+output "subnet_ids" { value = "${join(",", aws_subnet.private.*.id)}" }

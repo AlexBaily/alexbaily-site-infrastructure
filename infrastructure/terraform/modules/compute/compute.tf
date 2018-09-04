@@ -6,6 +6,7 @@ variable "private_subnets" {}
 variable "asg_name"        {} 
 variable "env"             {}
 variable "name"            {}
+variable "vpc_id"          {}
 
 data "aws_ami" "kops_master" {
   filter {
@@ -14,11 +15,25 @@ data "aws_ami" "kops_master" {
   }
 }
 
+resource "aws_security_group" "kops_master" {
+  name            = "kops_master"
+  description     = "${var.name} kops master SG"
+  vpc_id          = "${var.vpc_id}"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.102/32"]
+  }
+}
+
 resource "aws_launch_configuration" "as_conf" {
   name            = "${var.name} launch configuration"
   image_id        = "${data.aws_ami.kops_master.id}"
   instance_type   = "t2.nano"
-
+  key_name        = "kops-ssh-key"
+  security_groups = ["${aws_security_group.kops_master.id}"]
 }
 
 resource "aws_autoscaling_group" "as_group" {

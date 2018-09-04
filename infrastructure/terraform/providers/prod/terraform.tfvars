@@ -10,5 +10,5 @@ priv_cidrs     = "172.21.4.0/24,172.21.5.0/24,172.21.6.0/24"
 azs            = "eu-west-1a,eu-west-1b,eu-west-1c"
 
 #Compute
-kops_ami_id   = ""
-asg_name = "KOPs Master"
+kops_ami_id   = "ami-0a70add31403078a2"
+asg_name      = "KOPs Master"
