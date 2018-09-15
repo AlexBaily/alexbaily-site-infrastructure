@@ -9,6 +9,7 @@ variable "priv_cidrs"     {}
 variable "azs"            {}
 variable "kops_ami_id"    {}
 variable "env"            {}
+variable "kops_dns_zone"  {}
 provider "aws" {
   region = "${var.region}"
 }
@@ -22,6 +23,7 @@ module "network" {
   azs              = "${var.azs}"
   priv_cidrs       = "${var.priv_cidrs}"
   cidrs            = "${var.cidrs}"
+  kops_dns_zone    = "${var.kops_dns_zone}"
 }
 
 module "compute" {
