@@ -1,15 +1,16 @@
 #Main terraform file for VPN and Network testing environment
 
 
-variable "region"         {}
-variable "name"           {}
-variable "vpc_cidr"       {}
-variable "cidrs"          {} 
-variable "priv_cidrs"     {}
-variable "azs"            {}
-variable "kops_ami_id"    {}
-variable "env"            {}
-variable "kops_dns_zone"  {}
+variable "region"            {}
+variable "name"              {}
+variable "vpc_cidr"          {}
+variable "cidrs"             {} 
+variable "priv_cidrs"        {}
+variable "azs"               {}
+variable "kops_ami_id"       {}
+variable "env"               {}
+variable "kops_dns_zone"     {}
+variable "kops_state_bucket" {}
 provider "aws" {
   region = "${var.region}"
 }
@@ -18,12 +19,14 @@ provider "aws" {
 module "network" {
   source = "../../modules/network"
 
-  environment_name = "${var.name}"
-  vpc_cidr         = "${var.vpc_cidr}"
-  azs              = "${var.azs}"
-  priv_cidrs       = "${var.priv_cidrs}"
-  cidrs            = "${var.cidrs}"
-  kops_dns_zone    = "${var.kops_dns_zone}"
+  environment_name  = "${var.name}"
+  vpc_cidr          = "${var.vpc_cidr}"
+  azs               = "${var.azs}"
+  priv_cidrs        = "${var.priv_cidrs}"
+  cidrs             = "${var.cidrs}"
+  kops_dns_zone     = "${var.kops_dns_zone}"
+  env               = "${var.env}"
+  kops_state_bucket = "${var.kops_state_bucket}"
 }
 
 module "compute" {
