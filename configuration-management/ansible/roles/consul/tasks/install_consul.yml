@@ -19,7 +19,7 @@
 
   - name: check file exists
     stat:
-      path: /usr/local/bin/consul
+      path: /usr/bin/consul
     register: consul
 
   - name: register path
