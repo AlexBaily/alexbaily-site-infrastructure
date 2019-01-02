@@ -1,0 +1,36 @@
+---
+
+  - name: Check if consul binary exists
+    stat:
+      path: /tmp/consul_1.4.0_linux_amd64.zip
+    register: cons_binary
+
+  - name: Download consul binary zip
+    get_url:
+      url: https://releases.hashicorp.com/consul/1.4.0/consul_1.4.0_linux_amd64.zip
+      dest: /tmp/consul_1.4.0_linux_amd64.zip
+    when: cons_binary.stat.exists == False
+
+  - name: Extract to path
+    unarchive:
+      src: /tmp/consul_1.4.0_linux_amd64.zip
+      dest: /usr/bin
+      remote_src: yes
+
+  - name: check file exists
+    stat:
+      path: /usr/local/bin/consul
+    register: consul
+
+  - name: register path
+    shell: echo $PATH
+    register: path
+
+  - name: echo path
+    debug:
+      var: path
+
+  - name: show consul
+    debug:
+      var: consul 
+

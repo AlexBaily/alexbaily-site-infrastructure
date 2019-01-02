@@ -1,0 +1,4 @@
+---
+
+  - include: install_consul.yml
+  - include: run_consul.yml

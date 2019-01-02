@@ -1,0 +1,24 @@
+---
+
+ - name: Gather ec2 facts
+   ec2_facts:
+
+ - name: make consul configuration directory
+   file:
+    path: /etc/conf.d
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+
+ - name: Copy template file
+   template:
+     src: consul.j2
+     dest: /etc/conf.d/consul.conf
+
+ - name: Start Consul
+   shell: consul agent -server -bind={{ansible_ec2_local_ipv4}} -bootstrap-expect=2 -enable-script-check=true -config-dir=/etc/consul.d
+   args: 
+     executable: /bin/bash
+
+
