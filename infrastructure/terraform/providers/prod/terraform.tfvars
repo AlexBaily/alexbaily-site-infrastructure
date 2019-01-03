@@ -12,5 +12,7 @@ kops_dns_zone     = "kops.prod.alexbaily.com"
 kops_state_bucket = "state.kops.prod.alexbaily.com"
 
 #Compute
-kops_ami_id   = "ami-0a70add31403078a2"
-asg_name      = "KOPs Master"
+kops_ami_id     = "ami-0a70add31403078a2"
+asg_name        = "KOPs Master"
+consul_ami_id   = "ami-0b0b42aae59977de5"
+consul_asg_name = "Consul Servers ASG"

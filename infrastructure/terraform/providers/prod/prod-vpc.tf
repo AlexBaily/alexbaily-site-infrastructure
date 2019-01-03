@@ -11,6 +11,8 @@ variable "kops_ami_id"       {}
 variable "env"               {}
 variable "kops_dns_zone"     {}
 variable "kops_state_bucket" {}
+variable "consul_ami_id"     {}
+variable "consul_asg_name"   {}
 provider "aws" {
   region = "${var.region}"
 }
@@ -38,4 +40,6 @@ module "compute" {
   private_subnets = "${module.network.subnet_ids}"
   asg_name        = "${var.name}"
   vpc_id          = "${module.network.vpc_id}"
+  consul_asg_name = "${var.consul_asg_name}"
+  consul_ami_id   = "${var.consul_ami_id}"
 }

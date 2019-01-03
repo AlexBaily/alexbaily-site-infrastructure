@@ -1,13 +1,5 @@
 #This module will be used for the EC2 ASGs
 
-variable "region"          {}
-variable "kops_ami_id"     {}
-variable "private_subnets" {}
-variable "asg_name"        {} 
-variable "env"             {}
-variable "name"            {}
-variable "vpc_id"          {}
-
 data "aws_ami" "kops_master" {
   filter {
     name   = "image-id"
