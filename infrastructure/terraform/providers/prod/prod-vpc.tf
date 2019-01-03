@@ -7,6 +7,7 @@ variable "vpc_cidr"          {}
 variable "cidrs"             {} 
 variable "priv_cidrs"        {}
 variable "azs"               {}
+variable "vpc_dns"           {}
 variable "kops_ami_id"       {}
 variable "env"               {}
 variable "kops_dns_zone"     {}
@@ -29,6 +30,7 @@ module "network" {
   kops_dns_zone     = "${var.kops_dns_zone}"
   env               = "${var.env}"
   kops_state_bucket = "${var.kops_state_bucket}"
+  vpc_dns           = "${var.vpc_dns}"
 }
 
 module "compute" {

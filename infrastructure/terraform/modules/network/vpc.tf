@@ -5,6 +5,7 @@ variable "vpc_cidr"         {}
 variable "cidrs"            {}
 variable "priv_cidrs"       {}
 variable "azs"              {}
+variable "vpc_dns"          {}
 
 
 resource "aws_vpc" "vpc" {
@@ -12,6 +13,20 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
 
   tags { Name = "${var.environment_name}" } 
+}
+
+#Local address to be used with bind installed for consul to work on 53; 
+#AWS DNS for forwarded requests
+resource "aws_vpc_dhcp_options" "dhcp_option" {
+  domain_name          = "service.consul"
+  domain_name_servers  = ["127.0.0.1", "${var.vpc_dns}"]
+  ntp_servers          = ["127.0.0.1"]
+  netbios_name_servers = ["127.0.0.1"]
+  netbios_node_type    = 2
+
+  tags = {
+    Name = "consul-dhcp-options"
+  }
 }
 
 resource "aws_internet_gateway" "public" {
