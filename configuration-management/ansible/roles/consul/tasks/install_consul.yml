@@ -1,5 +1,34 @@
 ---
 
+  - name: Add consul user
+    user:
+      name: consul
+      shell: /bin/false
+      home: /etc/consul.d
+      system: yes
+
+  - name: Create support directory
+    file:
+     path: /opt/consul
+     owner: consul
+     group: consul
+     recursive: yes
+     mode: 0755
+     state: directory
+
+  - name: make consul configuration directory
+    file:
+     path: /etc/conf.d
+     owner: root
+     group: root
+     mode: 0755
+     state: directory
+
+  - name: Copy template file
+    template:
+      src: consul.j2
+      dest: /etc/conf.d/consul.conf    
+
   - name: Check if consul binary exists
     stat:
       path: /tmp/consul_1.4.0_linux_amd64.zip
