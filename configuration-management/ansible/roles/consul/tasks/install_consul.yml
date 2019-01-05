@@ -27,7 +27,9 @@
   - name: Copy template file
     template:
       src: consul.j2
-      dest: /etc/conf.d/consul.conf    
+      dest: /etc/conf.d/consul.conf 
+      owner: consul
+      mode: 0640   
 
   - name: Check if consul binary exists
     stat:
