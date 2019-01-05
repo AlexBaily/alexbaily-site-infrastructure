@@ -1,4 +1,4 @@
 ---
 
   - include: install_consul.yml
-  - include: coonfigure_service.yml
+  - include: configure_service.yml

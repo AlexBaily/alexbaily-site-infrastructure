@@ -1,4 +1,12 @@
 ---
+
+ - name: make consul configuration directory
+   file:
+    path: /etc/systemd/system
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
  - name: Check if template file exists
    stat:
      path: /etc/systemd/system/consul.service
@@ -8,5 +16,5 @@
    template:
      src: consul_service.j2
      dest: /etc/systemd/system/consul.service
-   when: consul_service.stat.exsits == False
+   when: consul_service.stat.exists == False
 

@@ -12,7 +12,7 @@
      path: /opt/consul
      owner: consul
      group: consul
-     recursive: yes
+     recurse: yes
      mode: 0755
      state: directory
 
