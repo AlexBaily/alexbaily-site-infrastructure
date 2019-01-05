@@ -29,6 +29,7 @@
       src: consul.j2
       dest: /etc/conf.d/consul.conf 
       owner: consul
+      group: root
       mode: 0640   
 
   - name: Check if consul binary exists

@@ -1,20 +1,8 @@
 ---
 
- - name: make consul configuration directory
-   file:
-    path: /etc/systemd/system
-    owner: root
-    group: root
-    mode: 0755
-    state: directory
- - name: Check if template file exists
-   stat:
-     path: /etc/systemd/system/consul.service
-   register: consul_service
-
- - name: Copy template file
-   template:
-     src: consul_service.j2
+ - name: Copy consul service file
+   copy:
+     src: consul.service
      dest: /etc/systemd/system/consul.service
-   when: consul_service.stat.exists == False
-
+     owner: root
+     group: root

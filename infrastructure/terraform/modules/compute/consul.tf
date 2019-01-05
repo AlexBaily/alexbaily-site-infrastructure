@@ -7,12 +7,15 @@ data "aws_ami" "consul_server_ami" {
   }
 }
 
+
+
 resource "aws_launch_configuration" "consul_as_conf" {
-  name            = "${var.name} Consul launch configuration"
   image_id        = "${data.aws_ami.consul_server_ami.id}"
   instance_type   = "t2.nano"
   key_name        = "kops-ssh-key"
+  user_data       = "${file("../../modules/compute/files/consul-user-data.sh")}"
   security_groups = ["${aws_security_group.consul_servers.id}"]
+  lifecycle { create_before_destroy = true }
 }
 
 resource "aws_autoscaling_group" "consul_as_group" {
@@ -23,4 +26,5 @@ resource "aws_autoscaling_group" "consul_as_group" {
   health_check_grace_period = 300
   health_check_type         = "EC2"
   launch_configuration      = "${aws_launch_configuration.consul_as_conf.name}"
+  lifecycle { create_before_destroy = true }
 }

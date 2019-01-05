@@ -13,7 +13,7 @@
             "instance_type": "t2.micro",
             "region": "eu-west-1",
             "secret_key": "{{user `aws_secret_key`}}",
-            "source_ami": "ami-0d6b2574",
+            "source_ami": "ami-09693313102a30b2c",
             "ssh_username": "ec2-user",
             "vpc_id": "{{user `vpc_id`}}",
             "subnet_id": "{{user `subnet_id`}}",

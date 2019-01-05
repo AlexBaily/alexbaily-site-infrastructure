@@ -15,5 +15,5 @@ vpc_dns           = "172.21.0.2"
 #Compute
 kops_ami_id     = "ami-0a70add31403078a2"
 asg_name        = "KOPs Master"
-consul_ami_id   = "ami-0b0b42aae59977de5"
+consul_ami_id   = "ami-05da7006dc55133cb"
 consul_asg_name = "Consul Servers ASG"
