@@ -16,21 +16,13 @@
      mode: 0755
      state: directory
 
-  - name: make consul configuration directory
-    file:
-     path: /etc/conf.d
-     owner: root
-     group: root
-     mode: 0755
-     state: directory
-
-  - name: Copy template file
-    template:
-      src: consul.j2
-      dest: /etc/conf.d/consul.conf 
+  - name: Copy config file
+    copy:
+      src: consul.json
+      dest: /etc/consul.d/consul.json
       owner: consul
       group: root
-      mode: 0640   
+      mode: 0640
 
   - name: Check if consul binary exists
     stat:

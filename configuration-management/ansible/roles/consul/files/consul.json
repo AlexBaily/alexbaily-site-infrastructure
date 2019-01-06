@@ -4,7 +4,7 @@
   "log_level": "INFO",
   "server": true,
   "ui": true,
-  "bind_add": SERVER_IP,
+  "bind_addr": SERVER_IP,
   "telemetry": {
      "statsite_address": "127.0.0.1:2180"
   }
