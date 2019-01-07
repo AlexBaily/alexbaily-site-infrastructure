@@ -1,0 +1,16 @@
+[
+  {
+    "name": "first",
+    "image": "service-first",
+    "cpu": 10,
+    "memory": 512,
+    "essential": true,
+    "network": "bridge",
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 0
+      }
+    ]
+  }
+]
