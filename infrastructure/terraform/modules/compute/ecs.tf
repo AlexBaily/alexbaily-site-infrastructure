@@ -15,8 +15,6 @@ resource "aws_ecs_service" "web" {
   cluster         = "${aws_ecs_cluster.prod_cluster.id}"
   task_definition = "${aws_ecs_task_definition.web.arn}"
   desired_count   = 2
-  iam_role        = "${aws_iam_role.foo.arn}"
-  depends_on      = ["aws_iam_role_policy."]
 
   ordered_placement_strategy {
     type  = "binpack"
@@ -24,9 +22,11 @@ resource "aws_ecs_service" "web" {
   }
 
   network_configuration {
-    subnets = "${var.
+    subnets = ["${var.private_subnets}"]
 
   }
-
 }
+
+resource 
+
 
