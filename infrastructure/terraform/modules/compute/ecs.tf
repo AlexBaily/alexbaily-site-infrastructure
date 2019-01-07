@@ -27,6 +27,3 @@ resource "aws_ecs_service" "web" {
   }
 }
 
-resource 
-
-
