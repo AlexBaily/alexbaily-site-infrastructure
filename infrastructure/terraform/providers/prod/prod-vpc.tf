@@ -44,4 +44,6 @@ module "compute" {
   vpc_id          = "${module.network.vpc_id}"
   consul_asg_name = "${var.consul_asg_name}"
   consul_ami_id   = "${var.consul_ami_id}"
+  ecs_ami_id      = "${var.ecs_ami_id}"
+  ecs_asg_name    = "${var.ecs_asg_name}"
 }

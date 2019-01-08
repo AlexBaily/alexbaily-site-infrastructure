@@ -27,3 +27,36 @@ resource "aws_ecs_service" "web" {
   }
 }
 
+###############
+#ECS ASG Block#
+###############
+
+#ECS AMI
+data "aws_ami" "ecs_server_ami" {
+  filter {
+    name   = "image-id"
+    values = ["${var.ecs_ami_id}"]
+  }
+}
+
+
+resource "aws_launch_configuration" "ecs_as_conf" {
+  image_id        = "${data.aws_ami.ecs_server_ami.id}"
+  instance_type   = "t2.medium"
+  key_name        = "kops-ssh-key"
+  user_data       = "${file("../../modules/compute/files/ecs-user-data.sh")}"
+  security_groups = ["${aws_security_group.ecs_servers.id}"]
+  lifecycle { create_before_destroy = true }
+}
+
+resource "aws_autoscaling_group" "ecs_as_group" {
+  vpc_zone_identifier       = ["${var.private_subnets}"]
+  name                      = "${var.ecs_asg_name} ASG"
+  min_size                  = 1
+  max_size                  = 5
+  health_check_grace_period = 300
+  health_check_type         = "EC2"
+  launch_configuration      = "${aws_launch_configuration.ecs_as_conf.name}"
+  lifecycle { create_before_destroy = true }
+}
+

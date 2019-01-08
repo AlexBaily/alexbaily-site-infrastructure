@@ -13,3 +13,7 @@ variable "asg_name"        {}
 #consul
 variable "consul_ami_id"   {}
 variable "consul_asg_name" {}
+
+#ecs
+variable "ecs_ami_id"      {}
+variable "ecs_asg_name"    {}
