@@ -13,7 +13,7 @@ kops_state_bucket = "state.kops.prod.alexbaily.com"
 vpc_dns           = "172.21.0.2"
 
 #Compute
-kops_ami_id     = "ami-0290edb01b4748063"
+kops_ami_id     = "ami-0a70add31403078a2"
 asg_name        = "KOPs Master"
 consul_ami_id   = "ami-00e9e5a91bf0929be"
 consul_asg_name = "Consul Servers ASG"

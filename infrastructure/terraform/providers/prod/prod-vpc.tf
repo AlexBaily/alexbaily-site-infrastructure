@@ -14,6 +14,8 @@ variable "kops_dns_zone"     {}
 variable "kops_state_bucket" {}
 variable "consul_ami_id"     {}
 variable "consul_asg_name"   {}
+variable "ecs_ami_id"        {}
+variable "ecs_asg_name"      {}
 provider "aws" {
   region = "${var.region}"
 }

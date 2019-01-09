@@ -7,7 +7,8 @@ resource "aws_ecs_cluster" "prod_cluster" {
 resource "aws_ecs_task_definition" "web" {
   family                = "service"
   container_definitions = "${file("../../modules/compute/files/task-definitions/web.json")}"
-
+  
+  network_mode = "bridge"
 }
 
 resource "aws_ecs_service" "web" {
@@ -45,7 +46,7 @@ resource "aws_launch_configuration" "ecs_as_conf" {
   instance_type   = "t2.medium"
   key_name        = "kops-ssh-key"
   user_data       = "${file("../../modules/compute/files/ecs-user-data.sh")}"
-  security_groups = ["${aws_security_group.ecs_servers.id}"]
+  security_groups = ["${aws_security_group.ecs_server.id}", "${aws_security_group.consul_agent.id}"]
   lifecycle { create_before_destroy = true }
 }
 
