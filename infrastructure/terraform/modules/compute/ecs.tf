@@ -17,15 +17,6 @@ resource "aws_ecs_service" "web" {
   task_definition = "${aws_ecs_task_definition.web.arn}"
   desired_count   = 2
 
-  ordered_placement_strategy {
-    type  = "binpack"
-    field = "cpu"
-  }
-
-  network_configuration {
-    subnets = ["${var.private_subnets}"]
-
-  }
 }
 
 ###############
