@@ -17,3 +17,4 @@ variable "consul_asg_name" {}
 #ecs
 variable "ecs_ami_id"      {}
 variable "ecs_asg_name"    {}
+variable "container_image" {}

@@ -1,7 +1,7 @@
 [
   {
     "name": "first",
-    "image": "service-first",
+    "image": "${var.container_image}",
     "cpu": 10,
     "memory": 512,
     "essential": true,

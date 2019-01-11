@@ -3,10 +3,19 @@ resource "aws_ecs_cluster" "prod_cluster" {
   name = "prod-cluster"
 }
 
+#Render the container definition json file
+data "template_file" "web_cont_def" {
+  template = "${file("../../modules/compute/files/task-definitions/web.json")}"
+  
+  vars {
+    container_image = "${var.container_image}"
+  }
+}
+
 #ECS Web Task Definition
 resource "aws_ecs_task_definition" "web" {
   family                = "service"
-  container_definitions = "${file("../../modules/compute/files/task-definitions/web.json")}"
+  container_definitions = "${data.template_file.web_cont_def.rendered}"
   
   network_mode = "bridge"
 }

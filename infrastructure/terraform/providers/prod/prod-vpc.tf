@@ -16,6 +16,7 @@ variable "consul_ami_id"     {}
 variable "consul_asg_name"   {}
 variable "ecs_ami_id"        {}
 variable "ecs_asg_name"      {}
+variable "container_image"   {}
 provider "aws" {
   region = "${var.region}"
 }
@@ -48,4 +49,5 @@ module "compute" {
   consul_ami_id   = "${var.consul_ami_id}"
   ecs_ami_id      = "${var.ecs_ami_id}"
   ecs_asg_name    = "${var.ecs_asg_name}"
+  container_image = "${var.containers_image}"
 }

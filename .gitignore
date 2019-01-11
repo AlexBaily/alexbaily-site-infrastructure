@@ -4,3 +4,4 @@
 *.pwd
 *.pwi
 *.retry
+*secrets.tf*
