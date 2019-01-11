@@ -3,8 +3,7 @@
 Will be:
 Infrastructure of the alexbaily.com website.
 
-Web stack:
+Current: Dev
 
-Database stack:
-
-CI/CD:
+Consul for Service Discovery/Registrator for service registry
+ECS and KOPs for compute
