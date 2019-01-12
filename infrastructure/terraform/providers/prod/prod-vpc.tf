@@ -49,5 +49,5 @@ module "compute" {
   consul_ami_id   = "${var.consul_ami_id}"
   ecs_ami_id      = "${var.ecs_ami_id}"
   ecs_asg_name    = "${var.ecs_asg_name}"
-  container_image = "${var.containers_image}"
+  container_image = "${var.container_image}"
 }
