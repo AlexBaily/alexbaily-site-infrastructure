@@ -1,7 +1,7 @@
 [
   {
     "name": "first",
-    "image": "$container_image",
+    "image": "${container_image}",
     "cpu": 10,
     "memory": 512,
     "essential": true,
