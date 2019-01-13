@@ -5,6 +5,9 @@
     "cpu": 10,
     "memory": 512,
     "essential": true,
+    "environment" : [
+      { "SERVICE_NAME" : "node_fe" }
+    ],
     "portMappings": [
       {
         "containerPort": 8080,
