@@ -6,7 +6,8 @@
     "memory": 512,
     "essential": true,
     "environment" : [
-      { "SERVICE_NAME" : "node_fe" }
+      { "SERVICE_NAME" : "web" },
+      { "SERVICE_TAGS" : "node,1.0"
     ],
     "portMappings": [
       {
