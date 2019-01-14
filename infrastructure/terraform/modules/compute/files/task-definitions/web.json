@@ -3,12 +3,12 @@
     "name": "first",
     "image": "${container_image}",
     "cpu": 10,
-    "memory": 512,
+    "memory": 512,   
     "essential": true,
     "environment" : [
-      { "SERVICE_NAME" : "web" },
-      { "SERVICE_TAGS" : "node,1.0" }
-    ],
+      { "name": "SERVICE_NAME", "VALUE": "web" },
+      { "name": "SERVICE_TAGS", "VALUE": "node,1.0" }
+    ],   
     "portMappings": [
       {
         "containerPort": 8080,
