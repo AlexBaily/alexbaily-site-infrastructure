@@ -7,7 +7,7 @@
     "essential": true,
     "environment" : [
       { "SERVICE_NAME" : "web" },
-      { "SERVICE_TAGS" : "node,1.0"
+      { "SERVICE_TAGS" : "node,1.0" }
     ],
     "portMappings": [
       {
