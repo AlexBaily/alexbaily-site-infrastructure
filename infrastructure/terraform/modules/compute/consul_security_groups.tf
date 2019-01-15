@@ -161,3 +161,13 @@ resource "aws_security_group_rule" "consul_agent_inbound_crpc_from_servers" {
 
   security_group_id = "${aws_security_group.consul_agent.id}"
 }
+
+resource "aws_security_group_rule" "consul_agent_outbound_to_self" {
+  type    = "egress"
+  from_port = 8500
+  to_port   = 8500
+  protocol  = "tcp"
+  self      = "true"
+
+  security_group_id = "${aws_security_group.consul_agent.id}"
+}
