@@ -26,5 +26,12 @@ resource "aws_autoscaling_group" "consul_as_group" {
   health_check_grace_period = 300
   health_check_type         = "EC2"
   launch_configuration      = "${aws_launch_configuration.consul_as_conf.name}"
+
+  tag {
+    key                 = "consul"
+    value               = "server"
+    propagate_at_launch = true
+  }
+
   lifecycle { create_before_destroy = true }
 }
