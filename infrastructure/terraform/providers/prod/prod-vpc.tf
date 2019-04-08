@@ -18,7 +18,9 @@ variable "ecs_ami_id"        {}
 variable "ecs_asg_name"      {}
 variable "container_image"   {}
 provider "aws" {
-  region = "${var.region}"
+
+  version = ">= 1.90.0"
+  region  = "${var.region}"
 }
 
 
@@ -50,4 +52,8 @@ module "compute" {
   ecs_ami_id      = "${var.ecs_ami_id}"
   ecs_asg_name    = "${var.ecs_asg_name}"
   container_image = "${var.container_image}"
+}
+
+module "identity" {
+  source = "../../modules/identity"
 }
