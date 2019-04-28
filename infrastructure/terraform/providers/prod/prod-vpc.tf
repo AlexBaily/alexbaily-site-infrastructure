@@ -54,6 +54,10 @@ module "compute" {
   container_image = "${var.container_image}"
 }
 
+module "data" {
+  source ="../../modules/data"
+}
+
 module "identity" {
   source = "../../modules/identity"
 }

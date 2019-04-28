@@ -3,28 +3,34 @@ resource "aws_dynamodb_table" "ExerciseTable" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 2
   write_capacity = 2
-  hash_key       = "ExerciseID"
+  hash_key       = "UserID"
   range_key      = "ExerciseDate"
 
   attribute {
-    name = "UserId"
+    name = "UserID"
     type = "S"
   }
 
-  attribute {
-    name = "ExerciseId"
-    type = "S"
-  }
+#  attribute {
+#    name = "ExerciseName"
+#    type = "S"
+#  }
 
   attribute {
     name = "ExerciseDate"
     type = "S"
   }
 
-  attribute {
-    name = "WeightReps"
-    type = "S"
-  }
+#  attribute {
+#    name = "Reps"
+#    type = "N"
+#  }
+
+#  attribute {
+#    name = "Weight"
+#    type = "N"
+#  }
+
 
   ttl {
     attribute_name = "TimeToExist"

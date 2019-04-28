@@ -34,6 +34,8 @@ resource "aws_ecs_service" "web" {
 
 #ECS AMI
 data "aws_ami" "ecs_server_ami" {
+  owners = ["amazon"]
+
   filter {
     name   = "image-id"
     values = ["${var.ecs_ami_id}"]

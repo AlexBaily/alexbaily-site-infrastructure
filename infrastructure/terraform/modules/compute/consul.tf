@@ -1,6 +1,8 @@
 #This module will be used for the EC2 ASGs
 
 data "aws_ami" "consul_server_ami" {
+  owners = ["self"]
+
   filter {
     name   = "image-id"
     values = ["${var.consul_ami_id}"]
